@@ -1,6 +1,8 @@
 <?php
 
 $user = 'usrSegundoProyecto';
+$user2 = 'usrSegundoProyecto';
+
 $passwd = '12345';
 $db = 'SegundoProyecto';
 $port = 5433;
