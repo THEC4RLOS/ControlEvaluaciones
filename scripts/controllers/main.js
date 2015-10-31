@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
 
 /**
  * @ngdoc function
@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the controlDeEvaluacionesApp
  */
-angular.module('controlDeEvaluacionesApp')
+/*angular.module('controlDeEvaluacionesApp')
   .controller('MainCtrl', function ($scope, $http) {
         $http.get("phps/getUser.php")
             .success(function (response) {
@@ -17,4 +17,4 @@ angular.module('controlDeEvaluacionesApp')
             });
 
 
-  });
+  });*/
