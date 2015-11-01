@@ -12,3 +12,4 @@ $query = "select * from evaluaciones";
 $result = pg_query($conn,$query);
 
 
+ 
