@@ -9,7 +9,7 @@
  * @param {type} param1
  * @param {type} param2
  */
-angular.module('controlDeEvaluacionesApp', [])
+angular.module('controlDeEvaluacionesApp', ['ngRoute'])
         .controller('IndexController', function ($scope, $http) {
             $scope.user = "2-0562-0727";
             $scope.pass = "12345";
@@ -30,6 +30,7 @@ angular.module('controlDeEvaluacionesApp', [])
                             }
                             if ($scope.Userinfo.type === "E") {
                                 console.log($scope.Userinfo);
+                                $scope.cargarAjax("/views/vistaEstudiante.php");
                                 //$scope.cargarAjax("/views/ventanaProfesor.php");
                             }
                         })
@@ -48,13 +49,13 @@ angular.module('controlDeEvaluacionesApp', [])
                         .error(function (err) {
                             console.log("Error cargando el div");
                         });
-            }
-        });
-        /*.config(function ($routeProvider) {
+            };
+        })
+        .config(function ($routeProvider) {
             $routeProvider
                     .when('/', {
-                        templateUrl: 'views/main.html',
-                        controller: 'MainCtrl',
+                        templateUrl: 'views/inicioSesion.php',
+                        controller: 'IndexController',
                         controllerAs: 'main'
                     })
                     .when('/about', {
@@ -65,4 +66,4 @@ angular.module('controlDeEvaluacionesApp', [])
                     .otherwise({
                         redirectTo: '/'
                     });
-        });*/
+        });
