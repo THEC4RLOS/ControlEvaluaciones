@@ -42,8 +42,9 @@ angular.module('controlDeEvaluacionesApp', ['ngRoute'])
                 $http.get(url)
                         .success(function (data) {
                             angular.element(document.querySelector('#main')).empty();
+                            angular.element(document.querySelector('.container')).empty();
                             //angular.element(document.querySelector('#container')).empty();                    
-                            angular.element(document.querySelector('#main')).append(data);
+                            angular.element(document.querySelector('.container')).append(data);
                             //angular.element(document.querySelector('#container')).append(data);
                         })
                         .error(function (err) {

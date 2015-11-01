@@ -5,10 +5,10 @@
         <h4 class="panel-title">Nombre Profesor</h4>
         <div class="btn-group"><!--div class="btn-group pull-right"-->
 
-            <a href="#" class="btn btn-default btn-xs">Cursos</a>
-            <a href="#" class="btn btn-default btn-xs">Evaluaciones</a>
-            <a href="#" class="btn btn-default btn-xs">Citas</a>
-            <a href="#" class="btn btn-default btn-xs">Asignación</a>
+            <a href="#" class="btn btn-default btn-sm">Cursos</a>
+            <a href="#" class="btn btn-default btn-sm">Evaluaciones</a>
+            <a href="#" class="btn btn-default btn-sm">Citas</a>
+            <a href="#" class="btn btn-default btn-sm">Asignación</a>
 
         </div>
     </div>
