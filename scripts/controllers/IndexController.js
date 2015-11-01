@@ -19,12 +19,16 @@ angular.module('controlDeEvaluacionesApp', [])
             $scope.entrar = function () {
                 $scope.error = " ";
                 $http.get("/consultaLogin.php?user=" + $scope.user + "&pass=" + $scope.pass)
-                        .success(function (data) {                            
+                        .success(function (data) {
                             $scope.Userinfo = data;
-                            if(data === "false"){
-                                $scope.error="Usuario o contraseña inválidos";
+                            if (data === "false") {
+                                $scope.error = "Usuario o contraseña inválidos";
                             }
                             if ($scope.Userinfo.type === "P") {
+                                console.log($scope.Userinfo);
+                                $scope.cargarAjax("/views/vistaProfesor.php");
+                            }
+                            if ($scope.Userinfo.type === "E") {
                                 console.log($scope.Userinfo);
                                 //$scope.cargarAjax("/views/ventanaProfesor.php");
                             }
@@ -37,10 +41,28 @@ angular.module('controlDeEvaluacionesApp', [])
                 $http.get(url)
                         .success(function (data) {
                             angular.element(document.querySelector('#main')).empty();
+                            angular.element(document.querySelector('#container')).empty();                    
                             angular.element(document.querySelector('#main')).append(data);
+                            angular.element(document.querySelector('#container')).append(data);
                         })
                         .error(function (err) {
-                            console.log("Error cargando el div")
+                            console.log("Error cargando el div");
                         });
             }
         });
+        /*.config(function ($routeProvider) {
+            $routeProvider
+                    .when('/', {
+                        templateUrl: 'views/main.html',
+                        controller: 'MainCtrl',
+                        controllerAs: 'main'
+                    })
+                    .when('/about', {
+                        templateUrl: 'views/about.html',
+                        controller: 'AboutCtrl',
+                        controllerAs: 'about'
+                    })
+                    .otherwise({
+                        redirectTo: '/'
+                    });
+        });*/
