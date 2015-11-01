@@ -1,18 +1,18 @@
 <!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8">
+<html  ng-app="controlDeEvaluacionesApp">
+    <head>        
+        <meta charset="utf-8">        
         <title></title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/bootstrap.css" />
-        <!--script src="scripts/controllers/main.js"></script-->
-        
-        <!--script src="JS/angularjs-1.4.7/angular.min.js"></script-->
+        <script src="scripts/controllers/IndexController.js"></script>                                           
+
 
     </head>
-    <body class="bg-info" ng-app="controlDeEvaluacionesApp">
+    <body class="bg-info">
 
         <!-- Add your site or application content here -->
         <div class="header">
@@ -22,15 +22,18 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="jumbotron">
+            <div class="container" ng-controller="IndexController">
+                <center>                    
+                </center>
+                <div id = "main" class="jumbotron">                    
                     <h2>Inicio Sesión</h2>
-                    <p class="lead">
+                    <label style="color: salmon">{{error}}</label>
+                    <p class="lead">                        
                         <input type="text" ng-model="user" class="form-control" placeholder="Usuario">
                         <br>
-                        <input type="text" ng-model="pass" class="form-control" placeholder="Contraseña">
+                        <input type="password" ng-model="pass" class="form-control" placeholder="Contraseña">
                     </p>
-                    <p><a class="btn btn-lg btn-success" ng-href="#/">Entrar</a></p>
+                    <p><a class="btn btn-lg btn-success" ng-click="entrar()">Entrar</a></p>
                 </div>
             </div>
 
@@ -89,10 +92,6 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
 
-        <!-- endbuild -->
-        <script src="scripts/angular.js"></script>
-        <script src="scripts/app.js"></script>
-        <script src="scripts/sortable.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+        <!-- endbuild -->        
     </body>
 </html>
