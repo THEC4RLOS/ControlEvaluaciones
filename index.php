@@ -9,8 +9,6 @@
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/bootstrap.css" />
         <script src="scripts/controllers/IndexController.js"></script>                                           
-
-
     </head>
     <body class="bg-info">
         <div class="header">
@@ -27,11 +25,6 @@
                     <p><a class="btn btn-lg btn-success" ng-click="entrar()">Entrar</a></p>
                 </div>
             </div>
-        </div>
-
-        <div class="containear">
-
-            <div ng-view=""></div>
         </div>    
     </body>
 </html>

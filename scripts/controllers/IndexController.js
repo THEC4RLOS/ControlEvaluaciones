@@ -11,8 +11,8 @@
  */
 angular.module('controlDeEvaluacionesApp', [])
         .controller('IndexController', function ($scope, $http) {
-            $scope.user;
-            $scope.pass;
+            $scope.user = "2-0562-0727";
+            $scope.pass = "12345";
             $scope.userType;
             $scope.Userinfo = "";
             $scope.error = " ";
@@ -41,9 +41,9 @@ angular.module('controlDeEvaluacionesApp', [])
                 $http.get(url)
                         .success(function (data) {
                             angular.element(document.querySelector('#main')).empty();
-                            angular.element(document.querySelector('#container')).empty();                    
+                            //angular.element(document.querySelector('#container')).empty();                    
                             angular.element(document.querySelector('#main')).append(data);
-                            angular.element(document.querySelector('#container')).append(data);
+                            //angular.element(document.querySelector('#container')).append(data);
                         })
                         .error(function (err) {
                             console.log("Error cargando el div");
