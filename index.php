@@ -9,13 +9,12 @@
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/bootstrap.css" />
         <script src="scripts/controllers/IndexController.js"></script>
+        <script src="cargarCursos/controllerCursosView.js"></script>
         <script src="scripts/controllers/angular-route.js"></script>
-
     </head>
     <body class="bg-info">
-
         <div class="header">
             <div ng-view="" class="container"></div>
-        </div>    
+        </div>
     </body>
 </html>

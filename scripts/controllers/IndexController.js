@@ -30,8 +30,7 @@ angular.module('controlDeEvaluacionesApp', ['ngRoute'])
                             }
                             if ($scope.Userinfo.type === "E") {
                                 console.log($scope.Userinfo);
-                                $scope.cargarAjax("/views/vistaEstudiante.php");
-                                //$scope.cargarAjax("/views/ventanaProfesor.php");
+                                $scope.cargarAjax("/views/vistaEstudiante.php");                               
                             }
                         })
                         .error(function (err) {
@@ -63,6 +62,10 @@ angular.module('controlDeEvaluacionesApp', ['ngRoute'])
                         templateUrl: 'views/about.html',
                         controller: 'AboutCtrl',
                         controllerAs: 'about'
+                    })
+                    .when('/views', {
+                        templateUrl: 'views/vistaEstudiante.php',
+                        controller: 'vistaEstudianteController'                        
                     })
                     .otherwise({
                         redirectTo: '/'
