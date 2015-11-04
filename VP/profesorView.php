@@ -24,7 +24,7 @@
           <td>{{ eval.cantidad }}</td>
           <td>
            
-            <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" ng-click=" verMisEstudiantes(eval.idGrupo)">Ver Estudiantes</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" ng-click=" verMisEstudiantes(eval.ide dGrupo)">Ver Estudiantes</button>
 
         
           </td>

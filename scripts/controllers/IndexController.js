@@ -23,7 +23,8 @@ var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
 
         })
         .controller('IndexController', function ($scope, $http, $location,myfactory) {
-            $scope.user = "2-0562-0727";
+            $scope.user = "0-2013-0025";
+            //$scope.user = "2-0562-0727";
             $scope.pass = "12345";
             
             myfactory.user=$scope.user;
@@ -66,21 +67,7 @@ var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
                             console.log("Error cargando el div");
                         });
             };
-        })
-        .controller(
-        'vistaEstudianteController', function ($scope, $http) {
-            $scope.cargarCursos = function () {
-                console.log("Hola");
-//                $http.get("/cargarCursos/cursosView.php")
-//                        .success(function (data) {
-//                            angular.element(document.querySelector('#mainEstudiantes')).empty();
-//                            angular.element(document.querySelector('#mainEstudiantes')).append(data);
-//                        })
-//                        .error(function (err) {
-//                            console.log("Error cargando el div");
-//                        });
-            };
-        })
+        })    
         .config(function ($routeProvider) {
             $routeProvider
                     .when('/', {
@@ -103,8 +90,8 @@ var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
                         controller: 'controllerProfesorView'                        
                     })
                     .when('/cursosEstudiante', {
-                        templateUrl: 'cargarCursos/cursosView.php'
-                        //controller: 'vistaEstudianteController'                        
+                        templateUrl: 'cargarCursos/cursosView.php',
+                        controller: 'controllerCursosView'                        
                     })
                     .otherwise({
                         redirectTo: '/'

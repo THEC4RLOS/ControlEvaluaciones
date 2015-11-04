@@ -1,6 +1,21 @@
 <html>
-    <div>
-        HOLA AQUI VAN MIS CURSOS
+    <div>               
+        <table class="table table-striped">            
+            <thead>
+                <tr>
+                    <th>Curso</th>
+                    <th>Codigo</th>
+                    <th>Grupo</th>                                                            
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="curso in cursos">
+                    <td>{{ curso.nombre}}</td>
+                    <td>{{ curso.codigo}}</td>
+                    <td>{{ curso.numero}}</td>                                        
+                </tr>
+            </tbody>
+        </table>
     </div>    
 </html>
 <?php

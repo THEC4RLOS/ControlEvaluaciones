@@ -1,5 +1,14 @@
+/**
+ * Controlador para la vista de estudiantes
+ * @param {type} param1
+ * @param {type} param2
+ */
 myApp.controller(
         'vistaEstudianteController', function ($scope, $http, $location) {
+            /**
+             * Funcion para cargar los cursos del estudiante
+             * @returns {undefined}
+             */            
             $scope.cargarCursos = function () {
                 console.log("Hola");
                 $location.path("/cursosEstudiante")

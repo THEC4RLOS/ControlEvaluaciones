@@ -14,6 +14,7 @@
         <script src="/Boostrap/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="styles/bootstrap.css" />                        
         <script src="scripts/controllers/IndexController.js"></script>      
+        <script src="cargarCursos/controllerCursosView.js"></script>
         <script src="VP/controllerProfesorView.js"></script>
         <script src="scripts/controllers/vistaEstudianteController.js"></script>          
         <script src="cargarCursos/controllerCursosView.js"></script>

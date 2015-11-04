@@ -4,17 +4,19 @@
  * and open the template in the editor.
  */
 
-angular.module('myApp', []).controller('profViewController', function ($scope, $http)
+myApp.controller('controllerCursosView', function ($scope, $http, myfactory)
 {
-    $scope.cursos = [];    
-    $scope.usuario;
+    $scope.cursos;    
     
-    $http.get("/cargarCurosos/cursosGetData.php")
-            .success(function (data) {
+    $scope.usuario = myfactory.user;      
+    
+    $http.get("/cargarCursos/cursosGetData.php?user="+myfactory.user)
+            .success(function (data) {                
                 $scope.cursos = data;
+                console.log($scope.cursos);
             })
             .error(function (err) {
                 $scope.info = err;
             });            
-    console.log($scope.cursos);
+    
 });
