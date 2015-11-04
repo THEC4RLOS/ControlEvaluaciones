@@ -40,10 +40,12 @@ var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
                             }
                             if ($scope.Userinfo.type === "P") {
                                 console.log($scope.Userinfo);
+                                myfactory.nombre = $scope.Userinfo.nombreCompleto;
                                 $location.path("/profesor");
                             }
                             if ($scope.Userinfo.type === "E") {
                                 console.log($scope.Userinfo);
+                                myfactory.nombre = $scope.Userinfo.nombreCompleto;
                                 $location.path("/estudiante");
                             }
                         })

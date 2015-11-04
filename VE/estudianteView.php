@@ -2,7 +2,8 @@
     <div class="panel-heading clearfix" style="background-color: #91CFFF; color: black">
         <!--span class="label label-default">Nombre Profesor</span-->
         <!--h4 class="panel-title pull-left" style="padding-top: 10px;">Nombre Profesor</h4-->
-        <h4 class="panel-title">Nombre Estudiante</h4>
+        <h4 class="panel-title">{{nombreCompleto}}</h4>
+        <hr>
         <div class="btn-group">            
             <button class="btn btn-default btn-sm"  data-toggle="modal" data-target=".bd-example-modal-lg" ng-click="cargarCursos()">Cursos</button>
             <button class="btn btn-default btn-sm" ng-click="cargarGrafico()">Grafico</button>

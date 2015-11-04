@@ -1,6 +1,7 @@
-myApp.controller('controllerEstudianteView', function ($scope, $location,$http) {
+myApp.controller('controllerEstudianteView', function ($scope, $location,$http,myfactory) {
     $scope.divCursos = false;
     $scope.oneAtATime = true;
+    $scope.nombreCompleto = myfactory.nombre;
     $scope.grupos = [
         {
             nombre: 'Dynamic Group Header - 1',
@@ -11,10 +12,16 @@ myApp.controller('controllerEstudianteView', function ($scope, $location,$http) 
             evaluacion: 'Dynamic Group Body - 2'
         }
     ];
+    /**
+     * Funcion para cargar los cursos, este invoca un archivo .php de manera asincrona
+     * que retorna un arreglo con objetos de tipo curso, en los que el estudiante esta matriculado
+     * @returns {undefined}
+     */
     $scope.cargarCursos = function () {
         console.log("Hola");
         $scope.divCursos = true;
-//        $http.get("/cargarCursos/cursosView.php")
+        
+        ////        $http.get("/cargarCursos/cursosView.php")
 //                .success(function (data) {
 //                    angular.element(document.querySelector('#mainEstudiantes')).empty();
 //                    angular.element(document.querySelector('#mainEstudiantes')).append(data);
