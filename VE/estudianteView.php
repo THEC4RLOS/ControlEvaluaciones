@@ -9,9 +9,9 @@
             <button class="btn btn-default btn-sm" ng-click="cargarCitas()">Citas</button>
             <button class="btn btn-default btn-sm" ng-click="cargarNotas()">Notas</button>
 
-        </div>
-        <div  id = "mainEstudiantes"></div>
+        </div>        
     </div>
+    <div  id = "mainEstudiantes"></div>
     <div class="check-element animate-show" ng-show="checked">
         <uib-accordion close-others="oneAtATime">
             <uib-accordion-group heading="{{curso.nombre}}" ng-repeat="curso in cursos">

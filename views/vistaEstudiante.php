@@ -7,10 +7,8 @@
             <a class="btn btn-default btn-sm" ng-click="cargarCursos()">Cursos</a>
             <a href="#" class="btn btn-default btn-sm">Grafico</a>
             <a href="#" class="btn btn-default btn-sm">Citas</a>
-            <a href="#" class="btn btn-default btn-sm">Notas</a>
-
-        </div>
-        <div  id = "mainEstudiantes"></div>
+            <a href="#" class="btn btn-default btn-sm">Notas</a>            
+        </div>        
     </div>
     <div class="check-element animate-show" ng-show="checked">
         <uib-accordion close-others="oneAtATime">
