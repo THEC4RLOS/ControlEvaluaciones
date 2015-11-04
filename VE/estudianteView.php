@@ -11,7 +11,24 @@
 
         </div>        
     </div>
-    <div  id = "mainEstudiantes"></div>
+    <div ng-show="divCursos">               
+        <table class="table table-striped" ng-controller="controllerCursosView">            
+            <thead>
+                <tr>
+                    <th>Curso</th>
+                    <th>Codigo</th>
+                    <th>Grupo</th>                                                            
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="curso in cursos">
+                    <td>{{ curso.nombre}}</td>
+                    <td>{{ curso.codigo}}</td>
+                    <td>{{ curso.numero}}</td>                                        
+                </tr>
+            </tbody>
+        </table>
+    </div>    
     <div class="check-element animate-show" ng-show="checked">
         <uib-accordion close-others="oneAtATime">
             <uib-accordion-group heading="{{curso.nombre}}" ng-repeat="curso in cursos">
