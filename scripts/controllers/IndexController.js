@@ -14,10 +14,21 @@
         
 var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
         
+        .factory('myfactory', function(){
 
-        .controller('IndexController', function ($scope, $http, $location) {
-            $scope.user = "0-2013-0006";
+            var fac = {};
+            fac.user="";
+            fac.pass="";
+            return fac;
+
+        })
+        .controller('IndexController', function ($scope, $http, $location,myfactory) {
+            $scope.user = "2-0562-0727";
             $scope.pass = "12345";
+            
+            myfactory.user=$scope.user;
+            myfactory.pass=$scope.pass;
+
             $scope.userType;
             $scope.Userinfo = "";
             $scope.error = " ";

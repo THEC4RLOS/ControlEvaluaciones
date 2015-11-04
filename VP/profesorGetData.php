@@ -11,7 +11,7 @@ $con = pg_connect($strCnx) or die("Error de conexion." . pg_last_error());
 $user= $_GET["usuario"];
 $contra = $_GET["Contra"];
 
-$query = "select personas.nombre,personas.apellido1,personas.apellido2,personas.sexo,funcionarios.cedula,cursos.nombre,horas,creditos,cursos.codigo,semestre,anno,cupo 
+$query = "select personas.nombre,personas.apellido1,personas.apellido2,personas.sexo,funcionarios.cedula,cursos.nombre,horas,creditos,cursos.codigo,semestre,anno,cupo,grupos.idgrupo 
 from gruposfuncionarios inner join funcionarios on gruposfuncionarios.cedula=funcionarios.cedula
 inner join grupos on gruposfuncionarios.idgrupo=grupos.idgrupo inner join cursos on grupos.codigo=cursos.codigo
 inner join personas on funcionarios.cedula=personas.cedula inner join usuarios on usuarios.cedula=funcionarios.cedula where usuarios.contraseña='$contra' and usuarios.cedula='$user'";

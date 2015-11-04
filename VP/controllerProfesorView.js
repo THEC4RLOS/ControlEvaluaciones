@@ -1,12 +1,14 @@
 /* global angular */
 
-myApp.controller('controllerProfesorView', function ($scope, $http)
+myApp.controller('controllerProfesorView', function ($scope, $http,myfactory)
 { 
     $scope.cursos = [
     ];
     $scope.ListadoEstudiantesPorGrupo=[];
-    
-    $http.get("/VP/profesorGetData.php?usuario=2-0562-0727&Contra=12345")
+    //console.log("DtaFac "+myfactory.user);
+    //console.log("DtaFac "+myfactory.pass);
+    //console.log("/VP/profesorGetData.php?usuario="+myfactory.user+"&Contra="+myfactory.pass);
+    $http.get("/VP/profesorGetData.php?usuario="+myfactory.user+"&Contra="+myfactory.pass)
             .success(function (response) {
                 $scope.miArrayPrueba = response;
                 //console.log($scope.miArrayPrueba[0]);
@@ -14,7 +16,7 @@ myApp.controller('controllerProfesorView', function ($scope, $http)
                 //console.log(response);
                 $scope.profesores=$scope.miArrayPrueba[0][0]+" "+$scope.miArrayPrueba[0][1]+" "+$scope.miArrayPrueba[0][2]
                 for(i in $scope.miArrayPrueba)
-                    $scope.cursos.push({curso:$scope.miArrayPrueba[i][5],grupo:$scope.miArrayPrueba[i][9],cupo:$scope.miArrayPrueba[i][11],horas:$scope.miArrayPrueba[i][6],creditos:$scope.miArrayPrueba[i][7],cantidad:$scope.miArrayPrueba[i][8]});
+                    $scope.cursos.push({curso:$scope.miArrayPrueba[i][5],grupo:$scope.miArrayPrueba[i][9],cupo:$scope.miArrayPrueba[i][11],horas:$scope.miArrayPrueba[i][6],creditos:$scope.miArrayPrueba[i][7],cantidad:$scope.miArrayPrueba[i][8],idGrupo:$scope.miArrayPrueba[i][12]});
             });
 
 
@@ -22,8 +24,18 @@ myApp.controller('controllerProfesorView', function ($scope, $http)
     {
         //hacer la consulta con el id del grupo para llenar esta lista temporal con los estudiantes de ese grupo
         $scope.ListadoEstudiantesPorGrupo.length=0;
-        $scope.ListadoEstudiantesPorGrupo.push({id:idGrupo,Nombre:'Mainor',apellidos:'Gamboa Rodriguez',Carne:'2013114746',notaTotal:'85'});
+         $http.get("/VP/studentsGetData.php?IG="+idGrupo)
+            .success(function (response) {
+                console.log("respuesta "+response);
+                $scope.miArrayParaEstudiantes = response;
+                for(i in $scope.miArrayParaEstudiantes)
+                    $scope.ListadoEstudiantesPorGrupo.push({id:idGrupo,Nombre:$scope.ListadoEstudiantesPorGrupo[i][0],apellidos:'Gamboa Rodriguez',Carne:'2013114746',notaTotal:'85'});
+            });
+        
+        
+        //$scope.ListadoEstudiantesPorGrupo.push({id:idGrupo,Nombre:'Mainor',apellidos:'Gamboa Rodriguez',Carne:'2013114746',notaTotal:'85'});
         console.log("codigo "+idGrupo);
+        
  };
     function MyCtrl($scope) {
         $scope.name = 'Superhero';
