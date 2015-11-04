@@ -9,9 +9,14 @@
  * @param {type} param1
  * @param {type} param2
  */
-angular.module('controlDeEvaluacionesApp', ['ngRoute'])
-        .controller('IndexController', function ($scope, $http) {
-            $scope.user = "2-0562-0727";
+    
+
+        
+var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
+        
+
+        .controller('IndexController', function ($scope, $http, $location) {
+            $scope.user = "0-2013-0006";
             $scope.pass = "12345";
             $scope.userType;
             $scope.Userinfo = "";
@@ -26,11 +31,11 @@ angular.module('controlDeEvaluacionesApp', ['ngRoute'])
                             }
                             if ($scope.Userinfo.type === "P") {
                                 console.log($scope.Userinfo);
-                                $scope.cargarAjax("/views/vistaProfesor.php");
+                                $location.path("/profesor");
                             }
                             if ($scope.Userinfo.type === "E") {
                                 console.log($scope.Userinfo);
-                                $scope.cargarAjax("/views/vistaEstudiante.php");                               
+                                $location.path("/estudiante");
                             }
                         })
                         .error(function (err) {
@@ -51,6 +56,20 @@ angular.module('controlDeEvaluacionesApp', ['ngRoute'])
                         });
             };
         })
+        .controller(
+        'vistaEstudianteController', function ($scope, $http) {
+            $scope.cargarCursos = function () {
+                console.log("Hola");
+//                $http.get("/cargarCursos/cursosView.php")
+//                        .success(function (data) {
+//                            angular.element(document.querySelector('#mainEstudiantes')).empty();
+//                            angular.element(document.querySelector('#mainEstudiantes')).append(data);
+//                        })
+//                        .error(function (err) {
+//                            console.log("Error cargando el div");
+//                        });
+            };
+        })
         .config(function ($routeProvider) {
             $routeProvider
                     .when('/', {
@@ -63,9 +82,18 @@ angular.module('controlDeEvaluacionesApp', ['ngRoute'])
                         controller: 'AboutCtrl',
                         controllerAs: 'about'
                     })
-                    .when('/views', {
+                    .when('/estudiante', {
                         templateUrl: 'views/vistaEstudiante.php',
-                        controller: 'vistaEstudianteController'                        
+                        controller: 'vistaEstudianteController'
+                       
+                    })
+                    .when('/profesor', {
+                        templateUrl: 'VP/profesorView.php',
+                        controller: 'controllerProfesorView'                        
+                    })
+                    .when('/cursosEstudiante', {
+                        templateUrl: 'cargarCursos/cursosView.php'
+                        //controller: 'vistaEstudianteController'                        
                     })
                     .otherwise({
                         redirectTo: '/'

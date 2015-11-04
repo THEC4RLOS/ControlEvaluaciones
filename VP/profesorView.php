@@ -1,16 +1,4 @@
-<?php
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <script src="/VP/controllerProfesorView.js"></script>
-    <script src="/Boostrap/js/jquery.js"></script>
-    <script src="/Boostrap/js/bootstrap.min.js"></script>
-    <title>CursosTEC</title>
-</head>
-<body ng-app="myApp" ng-controller="profViewController">
+
 <div class="container">
 
     <h3>Cursos de {{profesores}}</h3>
@@ -77,6 +65,4 @@
               </div>
             </div>
 <!--Modal del estudiante-->
-</body>
-</html>
 

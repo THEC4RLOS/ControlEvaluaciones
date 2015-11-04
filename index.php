@@ -7,14 +7,22 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="styles/bootstrap.css" />
-        <script src="scripts/controllers/IndexController.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="/VP/controllerProfesorView.js"></script>
+        <script src="/Boostrap/js/jquery.js"></script>
+        <script src="/Boostrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="styles/bootstrap.css" />                        
+        <script src="scripts/controllers/IndexController.js"></script>      
+        <script src="VP/controllerProfesorView.js"></script>
+        <script src="scripts/controllers/vistaEstudianteController.js"></script>          
         <script src="cargarCursos/controllerCursosView.js"></script>
         <script src="scripts/controllers/angular-route.js"></script>
+        
     </head>
     <body class="bg-info">
         <div class="header">
-            <div ng-view="" class="container"></div>
+            <div ng-view class="container"></div>
         </div>
     </body>
 </html>

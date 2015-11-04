@@ -1,6 +1,6 @@
 /* global angular */
 
-angular.module('myApp', []).controller('profViewController', function ($scope, $http)
+myApp.controller('controllerProfesorView', function ($scope, $http)
 { 
     $scope.cursos = [
     ];
@@ -27,7 +27,7 @@ angular.module('myApp', []).controller('profViewController', function ($scope, $
  };
     function MyCtrl($scope) {
         $scope.name = 'Superhero';
-    }
+    };
 /*
     $scope.EditarEvaluacion = function (idevaluacion)
     {

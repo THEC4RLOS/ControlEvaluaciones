@@ -1,7 +1,8 @@
-angular.module("controlDeEvaluacionesApp", []).controller(
-        'vistaEstudianteController', function ($scope, $http) {
+myApp.controller(
+        'vistaEstudianteController', function ($scope, $http, $location) {
             $scope.cargarCursos = function () {
                 console.log("Hola");
+                $location.path("/cursosEstudiante")
 //                $http.get("/cargarCursos/cursosView.php")
 //                        .success(function (data) {
 //                            angular.element(document.querySelector('#mainEstudiantes')).empty();
