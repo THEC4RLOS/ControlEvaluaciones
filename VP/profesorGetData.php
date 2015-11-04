@@ -18,14 +18,12 @@ inner join personas on funcionarios.cedula=personas.cedula inner join usuarios o
 $result = pg_query($con, $query) or die("Error durante la consulta de cursos de un profesor.  '$user'");
 $rawdata = array();
 $i=0;
-while ($registro = pg_fetch_array($result)){
 
+while ($registro = pg_fetch_array($result)){
         $rawdata[$i] = $registro;
        // echo json_encode($registro);
         $i++;
-
 }
-
 
 echo json_encode($rawdata);
 

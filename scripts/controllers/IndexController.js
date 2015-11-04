@@ -9,9 +9,7 @@
  * @param {type} param1
  * @param {type} param2
  */
-    
 
-        
 var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
         
         .factory('myfactory', function(){
@@ -23,8 +21,7 @@ var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
 
         })
         .controller('IndexController', function ($scope, $http, $location,myfactory) {
-            $scope.user = "0-2013-0025";
-            //$scope.user = "2-0562-0727";
+            $scope.user = "0-2013-0006";//2-0562-0727
             $scope.pass = "12345";
             
             myfactory.user=$scope.user;
@@ -73,21 +70,15 @@ var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
                     .when('/', {
                         templateUrl: 'views/inicioSesion.php',
                         controller: 'IndexController',
-                        controllerAs: 'main'
-                    })
-                    .when('/about', {
-                        templateUrl: 'views/about.html',
-                        controller: 'AboutCtrl',
-                        controllerAs: 'about'
-                    })
-                    .when('/estudiante', {
-                        templateUrl: 'views/vistaEstudiante.php',
-                        controller: 'vistaEstudianteController'
-                       
+                        controllerAs: 'inicioSesion'
                     })
                     .when('/profesor', {
                         templateUrl: 'VP/profesorView.php',
                         controller: 'controllerProfesorView'                        
+                    })
+                    .when('/estudiante', {
+                        templateUrl: 'VE/estudianteView.php',
+                        controller: 'controllerEstudianteView'                        
                     })
                     .when('/cursosEstudiante', {
                         templateUrl: 'cargarCursos/cursosView.php',
