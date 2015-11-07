@@ -11,26 +11,28 @@
  */
 
 var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
-        
-        .factory('myfactory', function(){
+
+        .factory('myfactory', function () {
 
             var fac = {};
-            fac.user="";
-            fac.pass="";
+            fac.user = "";
+            fac.pass = "";
             return fac;
 
         })
-        .controller('IndexController', function ($scope, $http, $location,myfactory) {
-            $scope.user = "0-2013-0006";//2-0562-0727
+        .controller('IndexController', function ($scope, $http, $location, myfactory) {
+            $scope.user = "";//2-0562-0727
             $scope.pass = "12345";
-            
-            myfactory.user=$scope.user;
-            myfactory.pass=$scope.pass;
 
+            myfactory.user = $scope.user;
+            myfactory.pass = $scope.pass;
+
+       
             $scope.userType;
             $scope.Userinfo = "";
             $scope.error = " ";
             $scope.entrar = function () {
+                
                 $scope.error = " ";
                 $http.get("/consultaLogin.php?user=" + $scope.user + "&pass=" + $scope.pass)
                         .success(function (data) {
@@ -52,6 +54,9 @@ var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
                         .error(function (err) {
                             $scope.info = err;
                         });
+                myfactory.user = $scope.user;
+                myfactory.pass = $scope.pass;
+               
             };
             $scope.cargarAjax = function (url) {
                 $http.get(url)
@@ -66,7 +71,7 @@ var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
                             console.log("Error cargando el div");
                         });
             };
-        })    
+        })
         .config(function ($routeProvider) {
             $routeProvider
                     .when('/', {
@@ -76,15 +81,15 @@ var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
                     })
                     .when('/profesor', {
                         templateUrl: 'VP/profesorView.php',
-                        controller: 'controllerProfesorView'                        
+                        controller: 'controllerProfesorView'
                     })
                     .when('/estudiante', {
                         templateUrl: 'VE/estudianteView.php',
-                        controller: 'controllerEstudianteView'                        
+                        controller: 'controllerEstudianteView'
                     })
                     .when('/cursosEstudiante', {
                         templateUrl: 'cargarCursos/cursosView.php',
-                        controller: 'controllerCursosView'                        
+                        controller: 'controllerCursosView'
                     })
                     .otherwise({
                         redirectTo: '/'
