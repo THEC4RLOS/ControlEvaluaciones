@@ -1,6 +1,6 @@
 <!doctype html>
 <html  ng-app="controlDeEvaluacionesApp">
-    <head>        
+    <head>
         <meta charset="utf-8">        
         <title></title>
         <!--script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script-->
