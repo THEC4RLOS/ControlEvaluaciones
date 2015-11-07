@@ -25,7 +25,12 @@
                 <tr ng-repeat="curso in cursos">
                     <td>{{ curso.nombre}}</td>
                     <td>{{ curso.codigo}}</td>
-                    <td>{{ curso.numero}}</td>                                        
+                    <td>{{ curso.numero}}</td>
+                    <td>
+                        <button ng-click="cargarGraficos(curso.codigo)">
+                            Gráfico
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>

@@ -3,18 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/cargarCursos/controllerCursosView.js</file>
             <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/scripts/controllers/IndexController.js</file>
-            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/cargarCursos/cursosGetData.php</file>
+            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/VE/estudianteView.php</file>
+            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/VE/cargarCursos/controllerCursosView.js</file>
             <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/scripts/controllers/vistaEstudianteController.js</file>
-            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/VP/profesorGetData.php</file>
+            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/VE/cargarGraficos/controllerGraficosEvaluacion.js</file>
+            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/VE/getEvaluacionesCursos.php</file>
             <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/views/vistaEstudiante.php</file>
-            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/VP/controllerProfesorView.js</file>
             <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/VP/profesorView.php</file>
             <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/views/vistaProfesor.php</file>
-            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/scripts/controllers/angular-route.js</file>
+            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/VE/controllerEstudianteView.js</file>
             <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/index.php</file>
-            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/cargarCursos/cursosView.php</file>
+            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/VP/profesorGetData.php</file>
+            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/VP/controllerProfesorView.js</file>
+            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/scripts/controllers/angular-route.js</file>
+            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/VE/cargarCursos/cursosGetData.php</file>
+            <file>file:/home/manfred/NetBeansProjects/TaskforceProjects/ControlEvaluaciones/trunk/VE/cargarGraficos/infoEvaluacionGetData.php</file>
         </group>
     </open-files>
 </project-private>
