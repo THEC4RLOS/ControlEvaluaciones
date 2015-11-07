@@ -18,11 +18,12 @@ myApp.controller('controllerEstudianteView', function ($scope, $location, $http,
         $scope.divEvaluaciones = true;
     };
     $scope.cargarGraficos = function (codigo) {
+        $scope.barColor = "5cb85c";
         $scope.infoEvaluacion = [];
         $scope.porcentajeEvaluado = 0;//procentaje que se ha evaluado del curso
-        $scope.porcentajeRestante = 100;// porcentaje que resta por evaluar del curso
+        $scope.porcentajeRestante = 100.0;// porcentaje que resta por evaluar del curso
         $scope.miPorcentaje = 0.0;//porcentaje que el estudiante ha ganado
-        $scope.porcentajeProyectado = 100;
+        $scope.porcentajeProyectado = 100.0;
         $http.get("/VE/cargarGraficos/infoEvaluacionGetData.php?user=" + myfactory.user + "&code=" + codigo)
                 .success(function (data) {
                     $scope.infoEvaluacion = data;
@@ -34,6 +35,9 @@ myApp.controller('controllerEstudianteView', function ($scope, $location, $http,
                         }
                         $scope.porcentajeRestante -= $scope.porcentajeEvaluado;
                         $scope.porcentajeProyectado = $scope.miPorcentaje + $scope.porcentajeRestante;
+                        if($scope.porcentajeProyectado<67.5){
+                            $scope.barColor = "d9534f";
+                        }
                         console.log("Porcentaje Evaluado: " + $scope.porcentajeEvaluado);
                         console.log("porcentajeRestante: " + $scope.porcentajeRestante);
                         console.log("Mi porcentaje: " + $scope.miPorcentaje);
@@ -49,7 +53,7 @@ myApp.controller('controllerEstudianteView', function ($scope, $location, $http,
                 });
 
 
-    }
+    };
     /*$scope.items = ['Item 1', 'Item 2', 'Item 3'];
      
      $scope.addItem = function () {

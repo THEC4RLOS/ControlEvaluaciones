@@ -6,7 +6,6 @@
         <hr>
         <div class="btn-group">            
             <button class="btn btn-default btn-sm" ng-click="cargarCursos()">Cursos</button>
-            <button class="btn btn-default btn-sm" ng-click="cargarGrafico()">Grafico</button>
             <button class="btn btn-default btn-sm" ng-click="cargarCitas()">Citas</button>
             <button class="btn btn-default btn-sm" ng-click="cargarNotas()">Notas</button>
         </div>        
@@ -51,7 +50,7 @@
                 </div>
                 Porcetaje Proyectado
                 <div class="progress">
-                    <div class="progress-bar-success" role="progressbar" aria-valuenow="70"aria-valuemin="0" aria-valuemax="100" style="width:{{porcentajeProyectado}}%">
+                    <div class="progress-bar-success" role="progressbar" aria-valuenow="70"aria-valuemin="0" aria-valuemax="100" style="width:{{porcentajeProyectado}}%;background-color: #{{barColor}}">
                         <center>{{porcentajeProyectado}}%</center>
                     </div>                    
                 </div>
