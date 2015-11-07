@@ -19,26 +19,25 @@ myApp.controller('controllerEstudianteView', function ($scope, $location, $http,
     };
     $scope.cargarGraficos = function (codigo) {
         $scope.infoEvaluacion = [];
+        $scope.porcentajeEvaluado = 0;//procentaje que se ha evaluado del curso
+        $scope.porcentajeRestante = 100;// porcentaje que resta por evaluar del curso
+        $scope.miPorcentaje = 0.0;//porcentaje que el estudiante ha ganado
+        $scope.porcentajeProyectado = 100;
         $http.get("/VE/cargarGraficos/infoEvaluacionGetData.php?user=" + myfactory.user + "&code=" + codigo)
                 .success(function (data) {
                     $scope.infoEvaluacion = data;
                     if ($scope.infoEvaluacion.length > 0) {
-                        
-                        
-                        var porcentajeEvaluado = 0;//procentaje que se ha evaluado del curso
-                        var porcentajeRestante = 100;// porcentaje que resta por evaluar del curso
-                        var miPorcentaje = 0.0;//porcentaje que el estudiante ha ganado
-                        var porcentajeProyectado = 0.0;// porcentaje de nota al que puede aspirar
+                        $scope.porcentajeProyectado = 0.0;// porcentaje de nota al que puede aspirar
                         for (i = 0; i < $scope.infoEvaluacion.length; i++) {
-                            porcentajeEvaluado += parseFloat(($scope.infoEvaluacion[i]['porcentaje']));
-                            miPorcentaje += parseFloat(($scope.infoEvaluacion[i]['nota']))*(parseFloat(($scope.infoEvaluacion[i]['porcentaje']))*0.01);
-                        }                        
-                        porcentajeRestante-=porcentajeEvaluado;
-                        porcentajeProyectado = miPorcentaje+porcentajeRestante;
-                        console.log("Porcentaje Evaluado: "+sporcentajeEvaluado);
-                        console.log("porcentajeRestante: "+porcentajeRestante);
-                        console.log("Mi porcentaje: "+miPorcentaje);
-                        console.log("Puedo ganar: "+porcentajeProyectado)
+                            $scope.porcentajeEvaluado += parseFloat(($scope.infoEvaluacion[i]['porcentaje']));
+                            $scope.miPorcentaje += parseFloat(($scope.infoEvaluacion[i]['nota'])) * (parseFloat(($scope.infoEvaluacion[i]['porcentaje'])) * 0.01);
+                        }
+                        $scope.porcentajeRestante -= $scope.porcentajeEvaluado;
+                        $scope.porcentajeProyectado = $scope.miPorcentaje + $scope.porcentajeRestante;
+                        console.log("Porcentaje Evaluado: " + $scope.porcentajeEvaluado);
+                        console.log("porcentajeRestante: " + $scope.porcentajeRestante);
+                        console.log("Mi porcentaje: " + $scope.miPorcentaje);
+                        console.log("Puedo ganar: " + $scope.porcentajeProyectado)
                     }
                     else {
                         console.log("Este curso no posee evaluaciones registradas");
