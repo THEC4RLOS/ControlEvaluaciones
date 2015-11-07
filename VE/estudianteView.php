@@ -9,12 +9,9 @@
             <button class="btn btn-default btn-sm" ng-click="cargarGrafico()">Grafico</button>
             <button class="btn btn-default btn-sm" ng-click="cargarCitas()">Citas</button>
             <button class="btn btn-default btn-sm" ng-click="cargarNotas()">Notas</button>
-
         </div>        
     </div>
-    <!--div ng-show="divCursos" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content"-->
+
     <div ng-show="divCursos" >
         <table class="table table-striped" ng-controller="controllerCursosView" style="background-color: #6A9CFF">            
             <thead>
@@ -34,11 +31,22 @@
         </table>
     </div>
 
-    <div class="check-element animate-show" ng-show="checked">
-        <uib-accordion close-others="oneAtATime">
-            <uib-accordion-group heading="{{curso.nombre}}" ng-repeat="curso in cursos">
-                {{curso.evaluacion}}
-            </uib-accordion-group>
-        </uib-accordion>
+    <div ng-show="divEvaluaciones"><!-- Muestra las evaluaciones de cada curso -->
+        <table class="table table-striped" ng-controller="controllerEvaluacionesCursosView" style="background-color: #6A9CFF">            
+            <thead>
+                <tr>
+                    <th>Evaluacion</th>
+                    <th>Nota</th>
+                    <th>Curso</th>                                                            
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="evaluacion in evaluaciones">
+                    <td>{{ evaluacion.nombre}}</td>
+                    <td>{{ evaluacion.nota}}</td>
+                    <td>{{ evaluacion.curso}}</td>                                        
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
