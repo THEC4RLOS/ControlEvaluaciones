@@ -23,14 +23,22 @@ myApp.controller('controllerEstudianteView', function ($scope, $location, $http,
                 .success(function (data) {
                     $scope.infoEvaluacion = data;
                     if ($scope.infoEvaluacion.length > 0) {
-                        var porcentajeEvaluado = 0;
-                        var porcentajeRestante = 100;
+                        
+                        
+                        var porcentajeEvaluado = 0;//procentaje que se ha evaluado del curso
+                        var porcentajeRestante = 100;// porcentaje que resta por evaluar del curso
+                        var miPorcentaje = 0.0;//porcentaje que el estudiante ha ganado
+                        var porcentajeProyectado = 0.0;// porcentaje de nota al que puede aspirar
                         for (i = 0; i < $scope.infoEvaluacion.length; i++) {
                             porcentajeEvaluado += parseFloat(($scope.infoEvaluacion[i]['porcentaje']));
-                        }
+                            miPorcentaje += parseFloat(($scope.infoEvaluacion[i]['nota']))*(parseFloat(($scope.infoEvaluacion[i]['porcentaje']))*0.01);
+                        }                        
                         porcentajeRestante-=porcentajeEvaluado;
-                        console.log(porcentajeEvaluado);
+                        porcentajeProyectado = miPorcentaje+porcentajeRestante;
+                        console.log("Porcentaje Evaluado: "+sporcentajeEvaluado);
                         console.log("porcentajeRestante: "+porcentajeRestante);
+                        console.log("Mi porcentaje: "+miPorcentaje);
+                        console.log("Puedo ganar: "+porcentajeProyectado)
                     }
                     else {
                         console.log("Este curso no posee evaluaciones registradas");
