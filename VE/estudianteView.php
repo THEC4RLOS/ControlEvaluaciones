@@ -2,13 +2,14 @@
     <div class="panel-heading clearfix" style="background-color: #91CFFF; color: black">
         <!--span class="label label-default">Nombre Profesor</span-->
         <!--h4 class="panel-title pull-left" style="padding-top: 10px;">Nombre Profesor</h4-->
-        <h4 class="panel-title">{{nombreCompleto}}</h4>
-        <hr>
+        <h4 class="panel-title">{{nombreCompleto}}</h4>         
+        <img class="btn btn-default btn-sm pull-right" ng-click="salir()" src="../Icons/1446957049_logout.png">                        
+        <hr>        
         <div class="btn-group">            
             <button class="btn btn-default btn-sm" ng-click="cargarCursos()">Cursos</button>
             <button class="btn btn-default btn-sm" ng-click="cargarCitas()">Citas</button>
-            <button class="btn btn-default btn-sm" ng-click="cargarNotas()">Notas</button>
-        </div>        
+            <button class="btn btn-default btn-sm" ng-click="cargarNotas()">Notas</button>                        
+        </div>                
     </div>
 
     <div ng-show="divCursos" >
@@ -26,8 +27,8 @@
                     <td>{{ curso.codigo}}</td>
                     <td>{{ curso.numero}}</td>
                     <td>
-                        <button  data-toggle="modal" data-target=".bd-example-modal-lg"  ng-click="cargarGraficos(curso.codigo)">
-                            Gráfico
+                        <button  class="glyphicon glyphicon-align-left"data-toggle="modal" data-target=".bd-example-modal-lg"  ng-click="cargarGraficos(curso.codigo)">
+                           Gráfico
                         </button>
                     </td>
                 </tr>

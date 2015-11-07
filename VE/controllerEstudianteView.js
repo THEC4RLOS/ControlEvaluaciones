@@ -37,22 +37,19 @@ myApp.controller('controllerEstudianteView', function ($scope, $location, $http,
                         $scope.porcentajeProyectado = $scope.miPorcentaje + $scope.porcentajeRestante;
                         if($scope.porcentajeProyectado<67.5){
                             $scope.barColor = "d9534f";
-                        }
-                        console.log("Porcentaje Evaluado: " + $scope.porcentajeEvaluado);
-                        console.log("porcentajeRestante: " + $scope.porcentajeRestante);
-                        console.log("Mi porcentaje: " + $scope.miPorcentaje);
-                        console.log("Puedo ganar: " + $scope.porcentajeProyectado)
-                    }
-                    else {
-                        console.log("Este curso no posee evaluaciones registradas");
-                    }
-                    console.log("$scope.infoEvaluacion: " + $scope.infoEvaluacion);
+                        }            
+                    }                                        
                 })
                 .error(function (err) {
                     $scope.infoEvaluacion = err;
                 });
 
 
+    };
+    $scope.salir = function (){
+        $scope.user="";
+        $scope.pass="";
+        $location.path("/");
     };
     /*$scope.items = ['Item 1', 'Item 2', 'Item 3'];
      

@@ -22,8 +22,8 @@
         
         
     </head>
-    <body class="bg-info">
-        <div class="header">
+    <body class="bg-info" style="background: url('Icons/99A.jpg');">
+        <div class="">
             <div ng-view class="container"></div>
         </div>
     </body>
