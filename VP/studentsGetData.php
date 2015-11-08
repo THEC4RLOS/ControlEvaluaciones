@@ -13,7 +13,7 @@ $Idgrupo= $_GET["IG"];
 $query = "select personas.nombre,matriculas.cedula,gruposmatriculas.idmatricula,cursos.nombre,grupos.idgrupo,grupos.semestre,grupos.anno,grupos.cupo, gruposmatriculas.nota
 from cursos inner join grupos on cursos.codigo=grupos.codigo inner join gruposmatriculas on gruposmatriculas.idgrupos=grupos.idgrupo inner join matriculas on gruposmatriculas.idmatricula=matriculas.idmatricula inner join personas on matriculas.cedula=personas.cedula
 where grupos.idgrupo='$Idgrupo'";
-$result = pg_query($con, $query) or die("Error durante la consulta de cursos de un profesor.  '$user'");
+$result = pg_query($con, $query) or die("Error durante la consulta de cursos de un profesor.  '$Idgrupo'");
 $rawdata = array();
 $i=0;
 while ($registro = pg_fetch_array($result)){
