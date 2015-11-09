@@ -36,9 +36,20 @@
                 <td>{{ eval.creditos }}</td>
                 <td>{{ eval.cantidad }}</td>
                 <td>
-
-                    <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" ng-click=" verMisEstudiantes(eval.idGrupo)">Ver Estudiantes</button>
-
+                    <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      Gestion del curso
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                      <li><a data-toggle="modal" data-target=".bd-example-modal-lg" ng-click=" verMisEstudiantes(eval.idGrupo)">Notas Evaluaciones</a></li>
+                      <li><a >Crear evaluacion</a></li>
+                      <li><a >Citas Revicion</a></li>
+                      <li><a >Crear citas</a></li>
+                    </ul>
+                  </div>
+                    <!--<button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" ng-click=" verMisEstudiantes(eval.idGrupo)">Ver Estudiantes</button>
+                    -->
 
                 </td>
             </tr>
@@ -57,16 +68,15 @@
                 <table class="table table-striped table-header-rotated scroll" >
                     <thead>
                         <tr id="TrA">
-                            <th style="  width: 103px; ">Nombre</th>
-                            <th>Nota Actual</th>
+                            <th style="  width: 200px !important; ">Nombre</th>
 
                         </tr>
                     </thead>
                     <tbody >
                     
                         <tr  ng-repeat="eval in ListadoEstudiantesPorGrupo">
-                            <td>{{ eval.Nombre }}</td>
-                            <td ng-repeat="otro in eval.ListaNotasEstudiantes track by $index "><input type="text" value="{{ otro }}"  style="width:30px; height: 20px; "></input></td>
+                            <td  style="  width: 200px !important; ">{{ eval.Nombre }}</td>
+                            <td ng-repeat="otro in eval.ListaNotasEstudiantes track by $index "><input type="text" id="{{ otro['id'] }}"  ui-Blur="miFun({{ otro['id'] }},{{ otro['cedula'] }},{{ otro['evaluacion'] }});" value="{{ otro['nota'] }}"  style="width:30px; height: 20px; "></input></td>
                             
                         </tr>
                     

@@ -2,8 +2,7 @@
 
 myApp.controller('controllerProfesorView', function ($scope, $http,myfactory)
 { 
-    $scope.cursos = [
-    ];
+    $scope.cursos = [];
     $scope.ListadoEstudiantesPorGrupo=[];
     //console.log("DtaFac "+myfactory.user);
     //console.log("DtaFac "+myfactory.pass);
@@ -20,17 +19,23 @@ myApp.controller('controllerProfesorView', function ($scope, $http,myfactory)
             });
 
 
+FuncionDeSalidaTextBoxNota=function(ced)
+{
+        alert(ced);
+}
+
+
  $scope.verMisEstudiantes = function (idGrupo)
     {
 
 
-   
+        var idGlobal=0;
         var Element = document.getElementById("TrA");
      
         while (Element.firstChild) Element.removeChild(Element.firstChild);
        // Element.innerHTML="";
         var node = document.createElement("th");         
-        node.style.width= "103px";   
+        node.style.width= "200px";   
         node.innerHTML="Nombre";
         
        // var node1 =document.createElement("th");         
@@ -78,31 +83,29 @@ myApp.controller('controllerProfesorView', function ($scope, $http,myfactory)
                     //hacer el pedido de las notas
                      $http.get("/VP/EvaluacionesDeUnEstudianteGetData.php?IG="+idGrupo+"&CD="+$scope.miArrayParaEstudiantes[i][1])
                         .success(function (response1) {
-                           // console.log("Estudiante Nombre");
-                             console.log(response1[0]["nombre"] + " "+response1[0]["cedula"] );
+                            
                             $scope.miArrayParaEstudiantesNotasE=[];
                             $scope.miArrayParaEstudiantesNotasE = response1;
                             var array=[];
-                            
+                            console.log("Mainor");
+                           
+                            var string="";
+                            var Nota="";
                             for(n in $scope.miArrayParaEstudiantesNotasE){
-                                array.push($scope.miArrayParaEstudiantesNotasE[n]["nota"])
+                               // console.log($scope.miArrayParaEstudiantesNotasE[n]["cedula"])
+                                //$scope.miArrayParaEstudiantesNotasE[n]["cedula"]=$scope.miArrayParaEstudiantesNotasE[n]["cedula"].replace("-",".");
+                                string="\""+$scope.miArrayParaEstudiantesNotasE[n]["cedula"]+"\"";//.replace(/-/g,";");
+                                
+                                Nota=$scope.miArrayParaEstudiantesNotasE[n]["nota"];
+                                
+                                console.log(string);
+                                array.push({nota:Nota,cedula:string,evaluacion:$scope.miArrayParaEstudiantesNotasE[n]["idevaluacion"],id:idGlobal})
+                               idGlobal++;
                             }
-                         //   console.log("Estudiante Nota");
-                          //  console.log(array);
-                           // var ar5=["0", "0", "82", "0"];
-                            //var ar5=["0","0","82","5"];
-                            //console.log(ar5);
+                     
                             $scope.ListadoEstudiantesPorGrupo.push({id:idGrupo,Nombre:response1[0]["nombre"],Carne:response1[0]["cedula"],ListaNotasEstudiantes:array});
-                
-               
-                            //arrayF.push(array);
-                            
-                           // $scope.ListadoEstudiantesPorGrupo.push({id:idGrupo,Nombre:$scope.miArrayParaEstudiantes[i][0],Carne:$scope.miArrayParaEstudiantes[i][1],ListaNotasEstudiantes:[0,2,6,5,8]});
-                        });
-                       // console.log("Estudiante Afuera");
-                       //   console.log(arrayF[i]);
-     
-                    
+                });
+        
                 }
             });
         
@@ -111,72 +114,25 @@ myApp.controller('controllerProfesorView', function ($scope, $http,myfactory)
         console.log("IDgrupo "+idGrupo);
         
  };
-    function MyCtrl($scope) {
-        $scope.name = 'Superhero';
+    $scope.miFun = function (Str1,str2,str3)
+    {   console.log(Str1);
+        console.log(document.getElementById(Str1).value);
+        
+        var str9=document.getElementById(Str1).value;
+        $http.get("/VP/updateDataEvaluaciones.php?nota="+str9+"&evaluacion="+str3+"&cedula="+str2)
+                        .success(function (response1) {
+                            alert(response1);
+                         });
+        
+        //console.log(Str1+" "+" "+str2+" "+str3);
+    }
+}).directive('uiBlur', function() {
+    return function( scope, elem, attrs ) {
+      elem.bind('blur', function() {
+        scope.$apply(attrs.uiBlur);
+      });
     };
-/*
-    $scope.EditarEvaluacion = function (idevaluacion)
-    {
-        if (idevaluacion == 'nueva')
-        {
-            $scope.nuevo = true;
-            $scope.edit = false;
-            $scope.incomplete = true;
-            $scope.nombre = '';
-            $scope.porcentaje = '';
-        }
-        else
-        {
-            $scope.nuevo = false;
-            $scope.edit = true;
-            $scope.idevaluacion = eid;
-            $scope.nombre = $scope.evaluaciones[idevaluacion - 1].nombre;
-            $scope.porcentaje = $scope.evaluaciones[idevaluacion - 1].porcentaje;
-        }
-    };
-
-    $scope.$watch('nombre', function () {
-        $scope.validar();
-    });
-    $scope.$watch('porcentaje', function () {
-        $scope.validar();
-    });
-
-    $scope.validar = function ()
-    {
-        if (!$scope.nombre.length || !$scope.porcentaje.length || isNaN($scope.porcentaje))
-        {
-            $scope.error = true;
-        }
-        else
-        {
-            $scope.error = false;
-        }
-    };
-
-    $scope.guardar = function ()
-    {
-        if ($scope.nuevo) {
-            //idevaluacion: $scope.evaluaciones.length + 1;
-            $scope.evaluaciones.push({idevaluacion: $scope.evaluaciones.length + 1, nombre: $scope.nombre, porcentaje: $scope.porcentaje});
-            //            $scope.evaluaciones.push({idevaluacion: $scope.evaluaciones.length + 1, nombre: $scope.nombre, porcentaje: $scope.porcentaje});
-
-            $http.get("setEval.php?idevaluacion=" + idevaluacion + "&idgrupo=15" + "&nombre=" + $scope.nombre + "&porcentaje=" + $scope.porcentaje)
-                    .success(function (response) {
-                        $scope.insertar = response;
-                console.log(response);
-                        if ($scope.insertar)
-                            alert("Se ha agragado");
-                        else
-                            alert("No se ha agregado");
-                    });
-        }
-        else
-            $scope.evaluaciones[$scope.idevaluacion - 1].nombre = $scope.nombre;
-        $scope.evaluaciones[$scope.idevaluacion - 1].porcentaje = $scope.porcentaje;
-    };*/
-
-});
+  });;
 // Change the selector if needed
 var $table = $('table.scroll'),
     $bodyCells = $table.find('tbody tr:first').children(),
