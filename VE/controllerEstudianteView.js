@@ -2,7 +2,7 @@ myApp.controller('controllerEstudianteView', function ($scope, $location, $http,
     $scope.divCursos = false;
     $scope.divEvaluaciones = false;
 
-    $scope.oneAtATime = true;
+    $scope.oneAtATime = true; 
     $scope.nombreCompleto = myfactory.nombre;
     /**
      * Funcion para cargar los cursos, este invoca un archivo .php de manera asincrona
@@ -11,11 +11,18 @@ myApp.controller('controllerEstudianteView', function ($scope, $location, $http,
      */
     $scope.cargarCursos = function () {
         $scope.divEvaluaciones = false;
+        $scope.divCitas = false;
         $scope.divCursos = true;
     };
     $scope.cargarNotas = function () {
         $scope.divCursos = false;
+        $scope.divCitas = false;        
         $scope.divEvaluaciones = true;
+    };
+    $scope.cargarCitas = function () {
+        $scope.divCursos = false;
+        $scope.divEvaluaciones = false;
+        $scope.divCitas = true;        
     };
     $scope.cargarGraficos = function (codigo) {
         $scope.barColor = "5cb85c";

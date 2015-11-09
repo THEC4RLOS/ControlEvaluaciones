@@ -78,4 +78,49 @@
         </table>        
     </div>
     
+    <div ng-show="divCitas">
+        <table class="table table-striped" ng-controller="controllerCitas" style="background-color: #6A9CFF">            
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Inicio</th>
+                    <th>Fin</th>
+                    <th>Evaluación</th>
+                    <th>Curso</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cita in citas">
+                    <td>{{ cita.fecha}}</td>
+                    <td>{{ cita.hora_inicio}}</td>
+                    <td>{{ cita.hora_fin}}</td>
+                    <td>{{ cita.nombre}}</td>
+                    <td>{{ cita.curso}}</td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        
+        <table class="table table-striped" ng-controller="controllerCitas" style="background-color: #6A9CFF">            
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Inicio</th>
+                    <th>Fin</th>
+                    <th>Evaluación</th>
+                    <th>Curso</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cita in citasDisponibles">
+                    <td>{{ cita.fecha}}</td>
+                    <td>{{ cita.hora_inicio}}</td>
+                    <td>{{ cita.hora_fin}}</td>
+                    <td>{{ cita.nombre}}</td>
+                    <td>{{ cita.curso}}</td>
+                    
+                </tr>
+            </tbody>
+        </table>        
+    </div>
 </div>

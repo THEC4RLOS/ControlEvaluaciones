@@ -12,12 +12,13 @@
         <script src="/VP/controllerProfesorView.js"></script>
         <script src="/Boostrap/js/jquery.js"></script>
         <script src="/Boostrap/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="styles/bootstrap.css" />                        
-        <script src="scripts/controllers/IndexController.js"></script>      
+        <link rel="stylesheet" href="styles/bootstrap.css" />
+        <script src="scripts/controllers/IndexController.js"></script>
         <script src="VE//cargarCursos/controllerCursosView.js"></script>
         <script src="VP/controllerProfesorView.js"></script>
         <script src="VE/controllerEstudianteView.js"></script>
-        <script src="VE/controllerEvaluacionesCursos.js"></script>            
+        <script src="VE/controllerEvaluacionesCursos.js"></script>
+        <script src="VE/Citas/controllerCitas.js"></script>        
         <script src="scripts/controllers/angular-route.js"></script>
         
         
