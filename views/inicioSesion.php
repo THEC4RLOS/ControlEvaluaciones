@@ -1,4 +1,5 @@
-<div id="main" class="jumbotron">
+<center>
+<div id="main" class="jumbotron containerLogin">
     <h2>Inicio Sesión</h2>
     <label style="color: salmon">{{error}}</label>
     <p class="lead">
@@ -8,7 +9,7 @@
     </p>
     <p><a class="btn btn-lg btn-success" ng-click="entrar()">Entrar</a></p>
 </div>
-
+</center>
 <!--login modal>
 <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">

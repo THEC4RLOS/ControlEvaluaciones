@@ -118,7 +118,11 @@
                     <td>{{ cita.hora_fin}}</td>
                     <td>{{ cita.nombre}}</td>
                     <td>{{ cita.curso}}</td>
-                    
+                    <td>
+                        <button  class=""  ng-click="crearCita(cita.idcita)">
+                            Citar
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>        
