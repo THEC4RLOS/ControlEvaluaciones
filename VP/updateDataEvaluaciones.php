@@ -18,7 +18,10 @@ $con = pg_connect($strCnx) or die("Error de conexion." . pg_last_error());
 $cedula= $_GET["cedula"];
 $nota = $_GET["nota"];
 $eval = $_GET["evaluacion"];
-
+$otroquery="INSERT INTO evaluaciones_estudiantes(
+            cedula, idevaluacion, nota)
+    VALUES ('$cedula', '$eval', '$nota')";
+$result2 = pg_query($con, $otroquery);
 $query = "UPDATE evaluaciones_estudiantes SET nota = '$nota' WHERE cedula = '$cedula' and idevaluacion='$eval'";
 $result = pg_query($con, $query) or die("Error durante la actualizacion de una nota");
 echo "UPDATE evaluaciones_estudiantes SET nota = '$nota' WHERE cedula = '$cedula' and idevaluacion='$eval'";
