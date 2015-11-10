@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="VP/CSSparaTables.css" />        
     <title>CursosTEC</title>
 </head>
-<body ng-app="myApp" ng-controller="profViewController">
+<body>
     <div class="container" style="background: white">
 
     <h3>Cursos de {{profesores}}</h3>
@@ -43,13 +43,11 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                       <li><a data-toggle="modal" data-target=".bd-example-modal-lg" ng-click=" verMisEstudiantes(eval.idGrupo)">Notas Evaluaciones</a></li>
-                      <li><a >Crear evaluacion</a></li>
+                      <li><a  data-toggle="modal" data-target=".bd-example-modal-Eval " ng-click="grupoAevaluar(eval.idGrupo)">Crear evaluacion</a></li>
                       <li><a >Citas Revicion</a></li>
                       <li><a >Crear citas</a></li>
                     </ul>
                   </div>
-                    <!--<button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" ng-click=" verMisEstudiantes(eval.idGrupo)">Ver Estudiantes</button>
-                    -->
 
                 </td>
             </tr>
@@ -59,7 +57,7 @@
     <hr>
     <div></div>
 </div>
-<!--Modal del estudiante-->
+<!--Modal del Evaluaciones por estudiantes-->
 
     <div  class="modal fade bd-example-modal-lg " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" >
@@ -87,9 +85,46 @@
     </div>
 
 
-</div>
 
-<!--Modal del estudiante-->
+
+<!--Modal del Evaluaciones por estudiantes-->
+
+
+<!--Modal de crear evaluaciones-->
+<div  class="modal fade bd-example-modal-Eval " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" 
+         style="width:30%;   
+         color: rgba(0, 0, 0, 0.71);
+         font-family: initial;
+         text-align: center;
+         " >
+            
+        <div class="modal-content" style="border-color: #449d44;" > 
+                <h1> Nueva evaluacion </h1>
+                    <form>
+                        <div class="form-group" style="margin-left: 10px;
+                                                       margin-right: 10px;">
+                            <label class= control-label">Nombre</label>
+                            <div class="">
+                                <input required="" type="Nombre" class="form-control" id="inputPassword" placeholder="Ej. Laboratorio 1">
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-left: 10px;
+                                                       margin-right: 10px;">
+                            <label for="inputPassword" class=" control-label">Porcentaje</label>
+                            <div class="">
+                              <input required=""   type="Porcentaje" class="form-control" id="inputPassword" placeholder="De 0 -100">
+                            </div>
+                        </div>
+                        <button class="btn btn-success" style="margin-bottom: 5px;" ng-click="CrearEvaluacion()">Crear</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+
+
+
+<!--Modal de crear evaluaciones-->
 </body>
 </html>
 

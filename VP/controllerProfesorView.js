@@ -1,5 +1,5 @@
 /* global angular */
-
+var globalAlaqueAsignarCursos=0;
 myApp.controller('controllerProfesorView', function ($scope, $http,myfactory)
 { 
     $scope.cursos = [];
@@ -19,10 +19,6 @@ myApp.controller('controllerProfesorView', function ($scope, $http,myfactory)
             });
 
 
-FuncionDeSalidaTextBoxNota=function(ced)
-{
-        alert(ced);
-}
 
 
  $scope.verMisEstudiantes = function (idGrupo)
@@ -70,8 +66,7 @@ FuncionDeSalidaTextBoxNota=function(ced)
                       }
             });
         
-
-      
+       
      //hacer la consulta con el id del grupo para llenar esta lista temporal con los estudiantes de ese grupo
         $scope.ListadoEstudiantesPorGrupo.length=0;
          $http.get("/VP/studentsGetData.php?IG="+idGrupo)
@@ -111,9 +106,17 @@ FuncionDeSalidaTextBoxNota=function(ced)
         
         
         //$scope.ListadoEstudiantesPorGrupo.push({id:idGrupo,Nombre:'Mainor',apellidos:'Gamboa Rodriguez',Carne:'2013114746',notaTotal:'85'});
-        console.log("IDgrupo "+idGrupo);
+     //   console.log("IDgrupo "+idGrupo);
         
  };
+ 
+  $scope.grupoAevaluar=function (id){globalAlaqueAsignarCursos=id;};
+        $scope.CrearEvaluacion=function ()
+        {
+            alert(globalAlaqueAsignarCursos);
+            
+        };
+ 
     $scope.miFun = function (Str1,str2,str3)
     {   console.log(Str1);
         console.log(document.getElementById(Str1).value);
