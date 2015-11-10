@@ -21,7 +21,9 @@
         <script src="VE/Citas/controllerCitas.js"></script>        
         <script src="scripts/controllers/angular-route.js"></script>
         
-        
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+        <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+
     </head>
     <body class="bg-info" style="background: url('Icons/99A.jpg');">
         <div class="">
