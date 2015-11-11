@@ -77,6 +77,7 @@ myApp.controller('controllerProfesorView', function ($scope, $http, myfactory,$l
     };
   
     //cargar los cursos del profesor y la información, dado su nombre y contaseña
+    /*Obtener la la info de un profesor*/
     $http.get("./VP/profesorGetData.php?usuario=" + myfactory.user + "&Contra=" + myfactory.pass)
             .success(function (response) {
                 $scope.miArrayPrueba = response;
@@ -94,7 +95,7 @@ myApp.controller('controllerProfesorView', function ($scope, $http, myfactory,$l
            $location.path("/");
        };
 
-
+/*Ver los estudiantes de un curso y obtener las notas por cada uno*/
     $scope.verMisEstudiantes = function (idGrupo)
     {
 
@@ -189,11 +190,26 @@ myApp.controller('controllerProfesorView', function ($scope, $http, myfactory,$l
     $scope.grupoAevaluar = function (id) {
         globalAlaqueAsignarCursos = id;
     };
+    /*Crea evaluaciones*/
     $scope.CrearEvaluacion = function ()
     {
+       
+        var nombre=document.getElementById("idNombre").value;
+        var pass=document.getElementById("idpass").value;
+        if( nombre ==="" || pass ==="")
+        {
+            alert("Rellene todos los campos");
+        }
+        else{
        // alert(globalAlaqueAsignarCursos);
-
-    };
+            $http.get("./VP/insertDataEvaluaciones.php?GP=" + globalAlaqueAsignarCursos + "&NR=" + nombre+"&PJ="+pass)
+                                     .success(function (response1) {
+                                        document.getElementById("idNombre").value="";
+                                       document.getElementById("idpass").value="";
+                                       
+                                     });
+            };
+    }
 
     /**
      * 

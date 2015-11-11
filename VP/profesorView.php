@@ -99,14 +99,14 @@
                              margin-right: 10px;">
                             <label class= control-label">Nombre</label>
                             <div class="">
-                                <input required="" type="Nombre" class="form-control" id="inputPassword" placeholder="Ej. Laboratorio 1">
+                                <input required="" type="Nombre" class="form-control" id="idNombre" placeholder="Ej. Laboratorio 1">
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 10px;
                              margin-right: 10px;">
                             <label for="inputPassword" class=" control-label">Porcentaje</label>
                             <div class="">
-                                <input required=""   type="Porcentaje" class="form-control" id="inputPassword" placeholder="De 0 -100">
+                                <input required=""   type="Porcentaje" class="form-control" id="idpass" placeholder="De 0 -100">
                             </div>
                         </div>
                         <button class="btn btn-success" style="margin-bottom: 5px;" ng-click="CrearEvaluacion()">Crear</button>

@@ -22,7 +22,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
         <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
     </head>
-    <body class="bg-info" style="background: url('Icons/99A.jpg');">
+    <body class="bg-info" style="background: url('./Icons/image.jpg');">
         <div class="">
             <div ng-view class="container"></div>
         </div>

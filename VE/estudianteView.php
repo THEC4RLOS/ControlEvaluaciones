@@ -1,5 +1,5 @@
 <div class="panel panel-danger">
-    <div class="panel-heading clearfix" style="background-color: #91CFFF; color: black">
+    <div class="panel-heading clearfix" style="background-color: #5cb85c; color: black">
         <!--span class="label label-default">Nombre Profesor</span-->
         <!--h4 class="panel-title pull-left" style="padding-top: 10px;">Nombre Profesor</h4-->
         <h4 class="panel-title">{{nombreCompleto}}</h4>         
@@ -13,7 +13,7 @@
     </div>
 
     <div ng-show="divCursos" >
-        <table class="table table-striped" ng-controller="controllerCursosView" style="background-color: #6A9CFF">            
+        <table class="table table-striped" ng-controller="controllerCursosView" style="background-color: #5cb85c">            
             <thead>
                 <tr>
                     <th>Curso</th>
@@ -37,6 +37,7 @@
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >  
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
+                <div style="margin: 10px">
                 Porcentaje Evaluado
                 <div class="progress">
                     <div class="progress-bar-success " role="progressbar" aria-valuenow="70"aria-valuemin="0" aria-valuemax="100" style="width:{{porcentajeEvaluado}}%">
@@ -55,12 +56,13 @@
                         <center>{{porcentajeProyectado}}%</center>
                     </div>                    
                 </div>
+                </div>
             </div>
         </div>
     </div>
     </div>
     <div ng-show="divEvaluaciones"><!-- Muestra las evaluaciones de cada curso -->
-        <table class="table table-striped" ng-controller="controllerEvaluacionesCursosView" style="background-color: #6A9CFF">            
+        <table class="table table-striped" ng-controller="controllerEvaluacionesCursosView" style="background-color:#5cb85c">            
             <thead>
                 <tr>
                     <th>Evaluacion</th>
@@ -79,7 +81,7 @@
     </div>
     
     <div ng-show="divCitas">
-        <table class="table table-striped" ng-controller="controllerCitas" style="background-color: #6A9CFF">            
+        <table class="table table-striped" ng-controller="controllerCitas" style="background-color: #5cb85c">            
             <thead>
                 <tr>
                     <th>Fecha</th>
@@ -101,7 +103,7 @@
             </tbody>
         </table>
         
-        <table class="table table-striped" ng-controller="controllerCitas" style="background-color: #6A9CFF">            
+        <table class="table table-striped" ng-controller="controllerCitas" style="background-color: #5cb85c">            
             <thead>
                 <tr>
                     <th>Fecha</th>

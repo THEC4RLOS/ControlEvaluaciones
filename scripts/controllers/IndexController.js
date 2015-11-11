@@ -21,7 +21,7 @@ var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
 
         })
         .controller('IndexController', function ($scope, $http, $location, myfactory) {
-            $scope.user = "2-0562-0727";//2-0562-0727
+            $scope.user = "2-0356-0499";//"2-0356-0499";//2-0562-0727
             $scope.pass = "12345";
 
             myfactory.user = $scope.user;
