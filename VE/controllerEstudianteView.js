@@ -1,12 +1,17 @@
+/**
+ * 
+ *Controlador para la vista del estudiante
+ *  @param {type} param1
+ * @param {type} param2
+ */
 myApp.controller('controllerEstudianteView', function ($scope, $location, $http, myfactory) {
-    $scope.divCursos = false;
-    $scope.divEvaluaciones = false;
+    $scope.divCursos = false;//para mostrar u cultar el div de cursos
+    $scope.divEvaluaciones = false;// para mostrar u ocultar el div de evaluaciones
 
     $scope.oneAtATime = true; 
     $scope.nombreCompleto = myfactory.nombre;
     /**
-     * Funcion para cargar los cursos, este invoca un archivo .php de manera asincrona
-     * que retorna un arreglo con objetos de tipo curso, en los que el estudiante esta matriculado
+     * Funcion para cargar mostrar
      * @returns {undefined}
      */
     $scope.cargarCursos = function () {
@@ -14,6 +19,10 @@ myApp.controller('controllerEstudianteView', function ($scope, $location, $http,
         $scope.divCitas = false;
         $scope.divCursos = true;
     };
+    /**
+     * función para mostrar las notas 
+     * @returns {undefined}
+     */
     $scope.cargarNotas = function () {
         $scope.divCursos = false;
         $scope.divCitas = false;        

@@ -1,14 +1,23 @@
 /* global angular */
 var globalAlaqueAsignarCursos = 0;
-
+/**
+ * Controlador de la vista principal
+ * @param {type} param1
+ * @param {type} param2
+ */
 myApp.controller('controllerProfesorView', function ($scope, $http, myfactory,$location)
 {
     $scope.guardadoError = false;
     $scope.guardadoOk = false;
 
-    $scope.cursos = [];
-    $scope.ListadoEstudiantesPorGrupo = [];
-    $scope.citas = [];
+    $scope.cursos = [];// cursos recbidos de la consulta
+    $scope.ListadoEstudiantesPorGrupo = [];// lista de estudiantes por cada grupo
+    $scope.citas = [];// lista de citas disponibles
+    /**
+     * Funcion para traer las citas de la base de datos, invoca al php
+     * @param {type} codigo codigo del curso a buscar citas
+     * @returns {undefined}
+     */
     $scope.verCitas = function (codigo) {
         $http.get("./VP/Citas/getCitas.php?user=" + myfactory.user + "&codigo=" + codigo)
                 .success(function (response) {
@@ -16,13 +25,28 @@ myApp.controller('controllerProfesorView', function ($scope, $http, myfactory,$l
                 });
     };
 
-    $scope.evaluaciones = [];
+    $scope.evaluaciones = [];//lista de evaluaciones
+    /**
+     * Funcion que invoca un php que trae las citas, dado el codigo del curso y el numero del grupo
+     * @param {type} codigocurso
+     * @param {type} numgrupo
+     * @returns {undefined}
+     */
     $scope.verCrearCitas = function (codigocurso, numgrupo) {
         $http.get("./VP/Citas/getEvaluacionesCurso.php?codigo=" + codigocurso + "&grupo=" + numgrupo)
                 .success(function (response) {
-                    $scope.evaluaciones = response;
+                    $scope.evaluaciones = response;//respuesta de la consulta
                 });
     };
+    
+    /**
+     * Función para agregar la cta de revisión
+     * @param {type} ideval el identificador de la evaluacion
+     * @param {type} fecha de la cita
+     * @param {type} inicio hora de inicio
+     * @param {type} fin hora de fin
+     * @returns {undefined}
+     */
     $scope.AgregarCita = function (ideval, fecha, inicio, fin) {
         if (typeof ideval === "undefined" || typeof fecha === "undefined" || typeof fin === "undefined" || typeof inicio === "undefined") {
             $scope.guardadoError = true;
@@ -51,9 +75,8 @@ myApp.controller('controllerProfesorView', function ($scope, $http, myfactory,$l
         }
 
     };
-    //console.log("DtaFac "+myfactory.user);
-    //console.log("DtaFac "+myfactory.pass);
-    //console.log("/VP/profesorGetData.php?usuario="+myfactory.user+"&Contra="+myfactory.pass);
+  
+    //cargar los cursos del profesor y la información, dado su nombre y contaseña
     $http.get("./VP/profesorGetData.php?usuario=" + myfactory.user + "&Contra=" + myfactory.pass)
             .success(function (response) {
                 $scope.miArrayPrueba = response;
@@ -93,12 +116,13 @@ myApp.controller('controllerProfesorView', function ($scope, $http, myfactory,$l
         //   Element.appendChild(node1);
 
 
-
+        //adquiere las evaluaciones de un grupo, dado un id del grupo (num)
+        //esto para asignar las citas de revisión
         $http.get("./VP/EvaluacionesGetData.php?IG=" + idGrupo)
                 .success(function (response) {
-                    //console.log(response)
+                    //console.log(response)the width of thead columns
 
-                    $scope.miArrayEvaluaciones = response;
+                    $scope.miArrayEvaluaciones = response;//evaluaciones del grupo
                     for (k in $scope.miArrayEvaluaciones) {
                         var node = document.createElement("th");
 
@@ -161,7 +185,7 @@ myApp.controller('controllerProfesorView', function ($scope, $http, myfactory,$l
         //   console.log("IDgrupo "+idGrupo);
 
     };
-
+    
     $scope.grupoAevaluar = function (id) {
         globalAlaqueAsignarCursos = id;
     };
@@ -171,6 +195,13 @@ myApp.controller('controllerProfesorView', function ($scope, $http, myfactory,$l
 
     };
 
+    /**
+     * 
+     * @param {type} Str1
+     * @param {type} str2
+     * @param {type} str3
+     * @returns {undefined}
+     */
     $scope.miFun = function (Str1, str2, str3)
     {
       //  console.log(Str1);
@@ -198,15 +229,16 @@ var $table = $('table.scroll'),
         $bodyCells = $table.find('tbody tr:first').children(),
         colWidth;
 
-// Adjust the width of thead cells when window resizes
+
+//ajusta el ancho de las celdas cuando se cambia el tamaño
 $(window).resize(function () {
     // Get the tbody columns width array
     colWidth = $bodyCells.map(function () {
         return $(this).width();
     }).get();
 
-    // Set the width of thead columns
+    // Setea el ancho de la columna
     $table.find('thead tr').children().each(function (i, v) {
         $(v).width(colWidth[i]);
     });
-}).resize(); // Trigger resize handler
+}).resize();
