@@ -3,7 +3,7 @@
         <!--span class="label label-default">Nombre Profesor</span-->
         <!--h4 class="panel-title pull-left" style="padding-top: 10px;">Nombre Profesor</h4-->
         <h4 class="panel-title">{{nombreCompleto}}</h4>         
-        <img class="btn btn-default btn-sm pull-right" ng-click="salir()" src="../Icons/1446957049_logout.png">                        
+        <img class="btn btn-default btn-sm pull-right" ng-click="salir()" src="./Icons/1446957049_logout.png">                        
         <hr>        
         <div class="btn-group">            
             <button class="btn btn-default btn-sm" ng-click="cargarCursos()">Cursos</button>
@@ -39,7 +39,7 @@
             <div class="modal-content">
                 Porcentaje Evaluado
                 <div class="progress">
-                    <div class="progress-bar-success" role="progressbar" aria-valuenow="70"aria-valuemin="0" aria-valuemax="100" style="width:{{porcentajeEvaluado}}%">
+                    <div class="progress-bar-success " role="progressbar" aria-valuenow="70"aria-valuemin="0" aria-valuemax="100" style="width:{{porcentajeEvaluado}}%">
                         <center>{{porcentajeEvaluado}}%</center>
                     </div>                    
                 </div>

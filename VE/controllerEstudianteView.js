@@ -31,7 +31,7 @@ myApp.controller('controllerEstudianteView', function ($scope, $location, $http,
         $scope.porcentajeRestante = 100.0;// porcentaje que resta por evaluar del curso
         $scope.miPorcentaje = 0.0;//porcentaje que el estudiante ha ganado
         $scope.porcentajeProyectado = 100.0;
-        $http.get("/VE/cargarGraficos/infoEvaluacionGetData.php?user=" + myfactory.user + "&code=" + codigo)
+        $http.get("./VE/cargarGraficos/infoEvaluacionGetData.php?user=" + myfactory.user + "&code=" + codigo)
                 .success(function (data) {
                     $scope.infoEvaluacion = data;
                     if ($scope.infoEvaluacion.length > 0) {

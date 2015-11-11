@@ -1,13 +1,16 @@
 /* global angular */
 var globalAlaqueAsignarCursos = 0;
 
-myApp.controller('controllerProfesorView', function ($scope, $http, myfactory)
+myApp.controller('controllerProfesorView', function ($scope, $http, myfactory,$location)
 {
+    $scope.guardadoError = false;
+    $scope.guardadoOk = false;
+
     $scope.cursos = [];
     $scope.ListadoEstudiantesPorGrupo = [];
     $scope.citas = [];
     $scope.verCitas = function (codigo) {
-        $http.get("/VP/Citas/getCitas.php?user=" + myfactory.user + "&codigo=" + codigo)
+        $http.get("./VP/Citas/getCitas.php?user=" + myfactory.user + "&codigo=" + codigo)
                 .success(function (response) {
                     $scope.citas = response;
                 });
@@ -15,16 +18,43 @@ myApp.controller('controllerProfesorView', function ($scope, $http, myfactory)
 
     $scope.evaluaciones = [];
     $scope.verCrearCitas = function (codigocurso, numgrupo) {
-        $http.get("/VP/Citas/getEvaluacionesCurso.php?codigo=" + codigocurso + "&grupo=" + numgrupo)
+        $http.get("./VP/Citas/getEvaluacionesCurso.php?codigo=" + codigocurso + "&grupo=" + numgrupo)
                 .success(function (response) {
                     $scope.evaluaciones = response;
                 });
     };
+    $scope.AgregarCita = function (ideval, fecha, inicio, fin) {
+        if (typeof ideval === "undefined" || typeof fecha === "undefined" || typeof fin === "undefined" || typeof inicio === "undefined") {
+            $scope.guardadoError = true;
+            $scope.guardadoOk = false;
+        }
+        else {
+            $scope.guardadoError = false;
+            $scope.guardadoOk = false;
+            $http.get("./VP/Citas/insertCita.php?idevaluacion=" + ideval + "&fecha=" + fecha + "&hora_inicio=" + inicio + "&hora_fin=" + fin)
+                    .success(function (data) {
+                        //alert(data);
+                        if (data === true) {
+                            $scope.guardadoOk = true;
+                            $scope.guardadoError = false;
+                        }
+                        else if (data === false) {
+                            $scope.guardadoOk = false;
+                            $scope.guardadoError = true;
+                        }
+                    })
+                    .error(function (err) {
+                        $scope.info = err;
+                        $scope.guardadoError = false;
+                        $scope.guardadoOk = false;
+                    });
+        }
 
+    };
     //console.log("DtaFac "+myfactory.user);
     //console.log("DtaFac "+myfactory.pass);
     //console.log("/VP/profesorGetData.php?usuario="+myfactory.user+"&Contra="+myfactory.pass);
-    $http.get("/VP/profesorGetData.php?usuario=" + myfactory.user + "&Contra=" + myfactory.pass)
+    $http.get("./VP/profesorGetData.php?usuario=" + myfactory.user + "&Contra=" + myfactory.pass)
             .success(function (response) {
                 $scope.miArrayPrueba = response;
                 //console.log($scope.miArrayPrueba[0]);
@@ -35,7 +65,11 @@ myApp.controller('controllerProfesorView', function ($scope, $http, myfactory)
                     $scope.cursos.push({curso: $scope.miArrayPrueba[i][5], grupo: $scope.miArrayPrueba[i][9], cupo: $scope.miArrayPrueba[i][11], horas: $scope.miArrayPrueba[i][6], creditos: $scope.miArrayPrueba[i][7], cantidad: $scope.miArrayPrueba[i][8], idGrupo: $scope.miArrayPrueba[i][12]});
             });
 
-
+    $scope.salir = function (){
+          $scope.user="";
+        $scope.pass="";
+           $location.path("/");
+       };
 
 
     $scope.verMisEstudiantes = function (idGrupo)
@@ -60,7 +94,7 @@ myApp.controller('controllerProfesorView', function ($scope, $http, myfactory)
 
 
 
-        $http.get("/VP/EvaluacionesGetData.php?IG=" + idGrupo)
+        $http.get("./VP/EvaluacionesGetData.php?IG=" + idGrupo)
                 .success(function (response) {
                     //console.log(response)
 
@@ -87,20 +121,20 @@ myApp.controller('controllerProfesorView', function ($scope, $http, myfactory)
 
         //hacer la consulta con el id del grupo para llenar esta lista temporal con los estudiantes de ese grupo
         $scope.ListadoEstudiantesPorGrupo.length = 0;
-        $http.get("/VP/studentsGetData.php?IG=" + idGrupo)
+        $http.get("./VP/studentsGetData.php?IG=" + idGrupo)
                 .success(function (response) {
                     $scope.miArrayParaEstudiantes = [];
                     $scope.miArrayParaEstudiantes = response;
                     arrayF = [];
                     for (i in $scope.miArrayParaEstudiantes) {
                         //hacer el pedido de las notas
-                        $http.get("/VP/EvaluacionesDeUnEstudianteGetData.php?IG=" + idGrupo + "&CD=" + $scope.miArrayParaEstudiantes[i][1])
+                        $http.get("./VP/EvaluacionesDeUnEstudianteGetData.php?IG=" + idGrupo + "&CD=" + $scope.miArrayParaEstudiantes[i][1])
                                 .success(function (response1) {
 
                                     $scope.miArrayParaEstudiantesNotasE = [];
                                     $scope.miArrayParaEstudiantesNotasE = response1;
                                     var array = [];
-                                    console.log("Mainor");
+                                    //console.log("Mainor");
 
                                     var string = "";
                                     var Nota = "";
@@ -111,7 +145,7 @@ myApp.controller('controllerProfesorView', function ($scope, $http, myfactory)
 
                                         Nota = $scope.miArrayParaEstudiantesNotasE[n]["nota"];
 
-                                        console.log(string);
+                                        //console.log(string);
                                         array.push({nota: Nota, cedula: string, evaluacion: $scope.miArrayParaEstudiantesNotasE[n]["idevaluacion"], id: idGlobal})
                                         idGlobal++;
                                     }
@@ -133,19 +167,19 @@ myApp.controller('controllerProfesorView', function ($scope, $http, myfactory)
     };
     $scope.CrearEvaluacion = function ()
     {
-        alert(globalAlaqueAsignarCursos);
+       // alert(globalAlaqueAsignarCursos);
 
     };
 
     $scope.miFun = function (Str1, str2, str3)
     {
-        console.log(Str1);
-        console.log(document.getElementById(Str1).value);
+      //  console.log(Str1);
+      //  console.log(document.getElementById(Str1).value);
 
         var str9 = document.getElementById(Str1).value;
-        $http.get("/VP/updateDataEvaluaciones.php?nota=" + str9 + "&evaluacion=" + str3 + "&cedula=" + str2)
+        $http.get("./VP/updateDataEvaluaciones.php?nota=" + str9 + "&evaluacion=" + str3 + "&cedula=" + str2)
                 .success(function (response1) {
-                    alert(response1);
+                   // alert(response1);
                 });
 
         //console.log(Str1+" "+" "+str2+" "+str3);

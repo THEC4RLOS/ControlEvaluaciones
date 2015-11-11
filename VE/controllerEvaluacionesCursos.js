@@ -10,7 +10,7 @@ myApp.controller('controllerEvaluacionesCursosView', function ($scope, $http, my
 
     $scope.usuario = myfactory.user;
     
-    $http.get("/VE/getEvaluacionesCursos.php?user=" + myfactory.user)
+    $http.get("./VE/getEvaluacionesCursos.php?user=" + myfactory.user)
             .success(function (data) {
                 $scope.evaluaciones = data;
             })

@@ -5,7 +5,7 @@ myApp.controller('controllerCitas', function ($scope, $http, myfactory)
 
     $scope.usuario = myfactory.user;
 
-    $http.get("/VE/Citas/getCitas.php?user=" + myfactory.user)
+    $http.get("./VE/Citas/getCitas.php?user=" + myfactory.user)
             .success(function (data) {
                 $scope.citas = data;
             })
@@ -13,7 +13,7 @@ myApp.controller('controllerCitas', function ($scope, $http, myfactory)
                 $scope.info = err;
             });
 
-    $http.get("/VE/Citas/getCitasDisponibles.php?user=" + myfactory.user)
+    $http.get(".VE/Citas/getCitasDisponibles.php?user=" + myfactory.user)
             .success(function (data) {
                 $scope.citasDisponibles = data;
             })
@@ -23,12 +23,12 @@ myApp.controller('controllerCitas', function ($scope, $http, myfactory)
 
 
     $scope.crearCita = function (idcita) {
-        $http.get("/VE/Citas/insertCita.php?user=" + myfactory.user + "&idcita=" + idcita)
+        $http.get("./VE/Citas/insertCita.php?user=" + myfactory.user + "&idcita=" + idcita)
                 .success(function (data) {
                     console.log(data);
                     $scope.citas = [];
                     $scope.citasDisponibles = [];
-                    $http.get("/VE/Citas/getCitas.php?user=" + myfactory.user)
+                    $http.get("./VE/Citas/getCitas.php?user=" + myfactory.user)
                             .success(function (data) {
                                 $scope.citas = data;
                             })
@@ -36,7 +36,7 @@ myApp.controller('controllerCitas', function ($scope, $http, myfactory)
                                 $scope.info = err;
                             });
 
-                    $http.get("/VE/Citas/getCitasDisponibles.php?user=" + myfactory.user)
+                    $http.get("./VE/Citas/getCitasDisponibles.php?user=" + myfactory.user)
                             .success(function (data) {
                                 $scope.citasDisponibles = data;
                             })

@@ -14,30 +14,24 @@
         <div class="container" style="background: white">
 
             <h3>Cursos de {{profesores}}</h3>
-
+            <img class="btn btn-default btn-sm pull-right" ng-click="salir()" src="./Icons/1446957049_logout.png">
             <table  class="table table-striped">
                 <thead>
                     <tr>
                         <th>Curso</th>
-                        <th>Semestre</th>
-                        <th>Cupo</th>
-                        <th>Horas</th>
-                        <th>Creditos</th>
-                        <th>Codigo</th>
+
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="eval in cursos">
                         <td>{{ eval.curso}}</td>
-                        <td>{{ eval.grupo}}</td>
-                        <td>{{ eval.cupo}}</td>
-                        <td>{{ eval.horas}}</td>
-                        <td>{{ eval.creditos}}</td>
-                        <td>{{ eval.cantidad}}</td>
+
+
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Gestion del curso
+                                    Gestion
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -91,8 +85,8 @@
 
         <!--Modal de crear evaluaciones-->
         <div  class="modal fade bd-example-modal-Eval " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" 
-                 style="width:30%;   
+            <div class="modal-dialog modal-sm" 
+                 style="
                  color: rgba(0, 0, 0, 0.71);
                  font-family: initial;
                  text-align: center;
@@ -160,25 +154,62 @@
 
 
         <!--Modal Crear Citas a evaluacion por Curso-->
+        <!--Modal de crear evaluaciones-->
         <div  class="modal fade bd-example-modal-CrearCitas " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" >
-                <div class="modal-content" style="overflow-y: auto;height: 600px;" >
+            <div class="modal-dialog modal-sm" 
+                 style="  
+                 color: rgba(0, 0, 0, 0.71);
+                 font-family: initial;
+                 text-align: center;
+                 " >
+
+                <div class="modal-content " >
+
+                    <h2 class="h1"> Agregar Cita </h2>
                     <label for="repeatSelect"> Evaluacion: </label>
-                    <select name="repeatSelect" id="repeatSelect">
+                    <select name="repeatSelect" id="evaluacion" ng-model="singleSelect">
                         <option ng-repeat="evaluacion in evaluaciones track by $index" value="{{evaluacion.idevaluacion}}">{{evaluacion.nombre}}</option>
                     </select>
 
                     <div >
-                        <p>Date: <input type="text" id="datepicker"></p>
-                        <p class="input-group">
-                            <input type="date" class="form-control" uib-datepicker-popup ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                            </span>
-                        </p>
+                        <center>
+                            <table>
+                                <tr>
+                                    <td>
+                                        Fecha: 
+                                    </td>
+                                    <td>
+                                        <input required="asas" type="text" id="fecha" placeholder="2015-01-01" ng-model="fecha">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Hora inicio: 
+                                    </td>
+                                    <td>                                        
+                                        <input type="text" id="inicio" placeholder="11:30:00" ng-model="inicio">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Hora fin: 
+                                    </td>
+                                    <td>
+                                        <input type="text" id="fin" placeholder="14:00:00" ng-model="fin">
+                                    </td>
+                                </tr>
+                            </table>
+                        </center>
+                        <button class="btn btn-success" style="margin-bottom: 5px;" ng-click="AgregarCita(singleSelect, fecha, inicio, fin)">Agregar</button>
+
                     </div>
+                    <button ng-show="guardadoOk" class="btn btn-success glyphicon glyphicon-ok" style="margin-bottom: 5px;"></button>
+                    <button ng-show="guardadoError" class="btn btn-danger glyphicon glyphicon-remove" style="margin-bottom: 5px;"></button>
+
                 </div>
+
             </div>
+
         </div>
         <!--Modal Ver Citas de evaluacion por Curso-->
     </body>

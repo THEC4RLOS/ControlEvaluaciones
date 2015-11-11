@@ -9,6 +9,14 @@ body {
   padding: 0;
 }
 
+
+.formCitas
+{
+    padding: 2%;
+    width: 40%;
+    height: 315px;
+    
+}
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,

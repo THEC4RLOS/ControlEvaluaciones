@@ -34,7 +34,7 @@ var myApp = angular.module('controlDeEvaluacionesApp', ['ngRoute'])
             $scope.entrar = function () {
                 
                 $scope.error = " ";
-                $http.get("/consultaLogin.php?user=" + $scope.user + "&pass=" + $scope.pass)
+                $http.get("./consultaLogin.php?user=" + $scope.user + "&pass=" + $scope.pass)
                         .success(function (data) {
                             $scope.Userinfo = data;
                             if (data === "false") {
