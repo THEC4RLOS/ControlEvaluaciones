@@ -28,11 +28,20 @@ myApp.controller('controllerEstudianteView', function ($scope, $location, $http,
         $scope.divCitas = false;        
         $scope.divEvaluaciones = true;
     };
+    /**
+     * funcion para mostrar las citas
+     * @returns {undefined}
+     */
     $scope.cargarCitas = function () {
         $scope.divCursos = false;
         $scope.divEvaluaciones = false;
         $scope.divCitas = true;        
     };
+    /**
+     * Funcion para generar los graficos, de
+     * @param {type} codigo
+     * @returns {undefined}
+     */
     $scope.cargarGraficos = function (codigo) {
         $scope.barColor = "5cb85c";
         $scope.infoEvaluacion = [];
@@ -62,6 +71,8 @@ myApp.controller('controllerEstudianteView', function ($scope, $location, $http,
 
 
     };
+    
+    //funcion para salir de la sesion
     $scope.salir = function (){
         $scope.user="";
         $scope.pass="";
